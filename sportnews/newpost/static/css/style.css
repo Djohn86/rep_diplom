@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.name{
+    display: flex;
+    height: 130px;
+    background: rgb(254,182,50);  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.menu{
+    width: auto;
+    height: 40px;
+    background: rgb(30,30,30);
+    padding: 0px;
+    margin: 0;
+    color: white;
+}
+.logo{
+    display: flex;
+    padding: 5px;
+}
+.logo2{
+    display: flex;
+    align-items: center;
+}
+.reg{
+    padding-left: 800px;
+    margin: auto;
+}
+.reg ul{
+    font-size: 18px;
+    list-style: none;
+    box-sizing: border-box;
+}
+.logo h1{
+    padding: 5px;
+    margin: auto 5px;
+    padding-left: 15px;
+}
+/* .logo a{
+    padding-top: 25px;
+} */
+/* img{
+    padding-top: 30px;
+} */
+
+a img{
+    margin: auto;
+}
+.lg{
+    
+    width: 1200px;
+    margin: auto;
+}
+.sp{
+    width: 900px;
+    margin: auto ;
+    padding: 11px;
+    
+}
+
+.menu ul{
+    font-size: 18px;
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.menu li{
+    margin: auto 20px;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.menu a{
+    text-decoration: none;
+    color: white;
+}
+.content{
+    width: 1200px;
+    height: 100vh;
+    margin: auto;
+    background-color: bisque;
+    
+}
+.content h1{
+    padding: 12px;
+}
+.new{
+    width: 1050px;
+    margin-left: 100px;
+    padding: 5px;
+}
+.blok{
+    padding: 6px;
+    display: flex;
+}
+.tit{
+    padding-left: 30px;
+    font-weight: bold;
+}
+.us{
+    padding-left: 30px;
+}
+#title{
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+}
+#news{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    padding: 25px;
+}
+.info{
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+.vis img{
+    margin: 20px 150px;
+}
+.forma{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn{
+    background: rgb(254,182,50);
+    color: black;
+    font-size: 14px;
+
+}
+.content button{
+    padding: 10px 40px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 6px 2px rgb(184, 166, 132);
+    margin: 40px 35%;
+    cursor: pointer;
+}
+p{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.aut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.zag{
+    margin: 40px;
+    color: rgb(23, 55, 92);
+}
+input{
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+span{
+    font-size: 10px;
+}
+.sp button{
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 6px 2px rgb(184, 166, 132);
+    margin: 5px;
+    cursor: pointer;
+
+}

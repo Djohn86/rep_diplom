@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="name">
+        <div class="lg">
+            <div class="logo">
+                <div class="logo2">
+
+                    <a href="{% url 'allnews' %}"><img src="{% static 'newpost/nl.png' %}" alt=""></a>
+                    
+                    <h1>betaSport</h1>
+                </div>
+                <div class="reg">
+                    {% if user.is_authenticated %}
+    
+                    <div class="regmenu">
+                        <div class="sp">
+                            <ul>
+                                <li class="usr">Пользователь: {{ user.username }}</li>
+                                
+                                <li><a href="{% url 'createnews' %}">Создать новость</a></li>
+                                <li> 
+                                    <form action="{% url 'logoutuser' %}" method="post">
+                                        {% csrf_token %}
+                                        <button class="btn">
+                                            Выйти
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    {% else %}
+    
+                    <div class="regmenu">
+                        <div class="sp">
+                            <ul>
+                                <li><a href="{% url 'signupuser' %}">Зарегистрироваться</a></li>
+                                <li><a href="{% url 'loginuser' %}">Войти</a></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    {% endif %}
+    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="menu">
+        <div class="sp">
+            <ul>
+                <li> <a href="{% url 'allnews' %}">Все новости</a> </li>
+                
+                    
+                <li> <a href="{% url 'football' %}">Футбол</a> </li>
+                <li><a href="{% url 'hockey' %}">Хоккей</a></li>
+                <li><a href="{% url 'basketball' %}">Баскетбол</a></li>
+                <li> <a href="{% url 'tennis' %}">Теннис</a> </li>
+                <li> <a href="{% url 'voleyball' %}">Волейбол</a> </li>
+                <li> <a href="{% url 'box' %}">Бокс</a> </li>
+                <li> <a href="{% url 'mynews' %}">Мои новости</a></li>
+            </ul>
+        </div>
+    </div>
+    {% else %}
+    <div class="menu">
+        <div class="sp">
+            <ul>
+                <li> <a href="{% url 'allnews' %}">Все новости</a> </li>
+                <li><a href="{% url 'football' %}">Футбол</a></li>
+                <li><a href="{% url 'hockey' %}">Хоккей</a></li>
+                <li><a href="{% url 'basketball' %}">Баскетбол</a></li>
+                <li> <a href="{% url 'tennis' %}">Теннис</a> </li>
+                <li> <a href="{% url 'voleyball' %}">Волейбол</a> </li>
+                <li> <a href="{% url 'box' %}">Бокс</a> </li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div class="glob" >
+        <div class="content">
+            <div class ='wrap'>
+                {% block content %}
+
+                {% endblock %}
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

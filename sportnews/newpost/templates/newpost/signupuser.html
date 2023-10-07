@@ -1,0 +1,23 @@
+{% extends 'newpost/base.html' %}
+
+{% block content %}
+<div class="aut">
+    <div class="zag"><h1>Регистрация</h1></div>
+    <div> {{ error }} </div>
+</div>
+<div class="forma">
+    <form method="post" clas="register">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="btn2">
+            <button class="btn">
+                Зарегистрироваться
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+    
+
+   

@@ -1,0 +1,21 @@
+{% extends 'newpost/base.html' %}
+
+{% block content %}
+<div class="aut">
+    <div class="zag"><h1>Авторизация</h1></div>
+    
+    <div> {{ error }} </div>
+</div>
+<div class="forma">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="center">
+        
+            <button class="btn">
+                Авторизация
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
