@@ -31,6 +31,7 @@ def signupuser(request):
                 'form': UserCreationForm(),
                 'error': 'Пароли не совпадают'})
 
+
 def mynews(request):
     np = Sportnews.objects.filter(user=request.user)
     return render(request, 'newpost/mynews.html', {'np': np})
@@ -52,8 +53,8 @@ def loginuser(request):
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request, 'newpost/loginuser.html', {'form': AuthenticationForm()},
-                          'error' 'учетной записи не существует ')
+            return render(request, 'newpost/loginuser.html', {'form': AuthenticationForm(),
+                          'error': 'учетной записи не существует '})
         else:
             login(request, user)
             return redirect('mynews')

@@ -95,9 +95,12 @@ a{
     padding: 12px;
 }
 .new{
+    
     width: 1050px;
     margin-left: 100px;
-    padding: 5px;
+    padding-right: 400px;
+    margin-right: 150px;
+    
 }
 .blok{
     padding: 6px;
@@ -178,4 +181,7 @@ span{
     margin: 5px;
     cursor: pointer;
 
+}
+.er{
+    color: red;
 }
