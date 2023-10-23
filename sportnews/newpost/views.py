@@ -65,7 +65,7 @@ def createnews(request):
         return render(request, 'newpost/createnews.html', {'form': NewsForm()})
     else:
         try:
-            form = NewsForm(request.POST)
+            form = NewsForm(request.POST, request.FILES)
             newpost = form.save(commit=False)
             newpost.user = request.user
             newpost.save()

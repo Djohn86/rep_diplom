@@ -10,10 +10,14 @@
 <div class="new">
     
     <div id="news">{{ post.news|linebreaksbr }}</div>
-    
+    <div>
+        {% if post.image %}
+        <img src="{{ post.image.url }}">
+        {% endif %}
+    </div>
     <div class="info">
         <div>Автор: {{ post.user }}</div>
         <div>Дата: {{ post.created }}</div>
-    </div>    
+    </div>
 </div>
 {% endblock %}

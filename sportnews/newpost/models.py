@@ -17,7 +17,7 @@ class Sportnews(models.Model):
     memo = models.TextField(blank=True)
     news = models.TextField(max_length=1500)
     created = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='newpost/images/', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):

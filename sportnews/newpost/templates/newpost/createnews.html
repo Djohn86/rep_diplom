@@ -11,7 +11,7 @@
 
 <div> {{ error }} </div>
 <div class="new">
-    <form method="post" class="aut">
+    <form class="aut" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="center">

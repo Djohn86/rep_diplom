@@ -5,4 +5,4 @@ from .models import Sportnews
 class NewsForm(ModelForm):
     class Meta:
         model = Sportnews
-        fields = ['tsport', 'title', 'news']
+        fields = ['tsport', 'title', 'news', 'image']

@@ -86,8 +86,9 @@ a{
 }
 .content{
     width: 1200px;
-    height: 100vh;
+    height: max-content;
     margin: auto;
+    padding-bottom: 100px;
     background-color: bisque;
     
 }
