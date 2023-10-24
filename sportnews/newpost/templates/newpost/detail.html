@@ -20,4 +20,30 @@
         <div>Дата: {{ post.created }}</div>
     </div>
 </div>
+<div class="comments">
+    <form action="{% url 'detail' post.id %}" class="comform" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="formfield">
+            <label for="formInput#textarea">{{ field.label }}:</label>
+            {{ field }}
+
+        </div>
+        {% endfor %}
+
+        <input class='btn btn--sub btn--lg' type="submit">
+
+    </form>
+</div>
+<div class="comentlist">
+    {% for i in post.coment_set.all %}
+    {% if i.body %}
+    <div class="comentuser">
+        <div class="usern">Пользователь: {{ i.owner }}</div>
+        <div class="usertext"> {{ i.body }}</div>
+        <div class="user">Дата комментария: {{ i.created }}</div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

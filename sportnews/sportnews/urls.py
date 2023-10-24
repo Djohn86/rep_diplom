@@ -42,7 +42,7 @@ urlpatterns = [
     path('box/', views.box, name='box'),
 
     # отображение полной новости
-    path('<int:blog_id>/', views.detail, name='detail'),
+    path('<int:pk>/', views.detail, name='detail'),
 ]
 
 if settings.DEBUG:

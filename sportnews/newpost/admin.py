@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Sportnews
+from .models import Sportnews, Coment
 
 
 class NewpostAdmin(admin.ModelAdmin):
@@ -7,5 +7,6 @@ class NewpostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Sportnews, NewpostAdmin)
+admin.site.register(Coment)
 
 

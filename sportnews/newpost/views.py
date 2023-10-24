@@ -3,8 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
-from .forms import NewsForm
+from .forms import NewsForm, ComentForm
 from .models import Sportnews
+from django.contrib import messages
 
 
 def allnews(request):
@@ -107,6 +108,18 @@ def box(request):
     return render(request, 'newpost/box.html', {'an': an})
 
 
-def detail(request, blog_id):
-    post = get_object_or_404(Sportnews, pk=blog_id)
-    return render(request, 'newpost/detail.html', {'post': post })
+def detail(request, pk):
+    post = Sportnews.objects.get(id=pk)
+    # post = get_object_or_404(Sportnews, id=pk)
+    form = ComentForm()
+
+    if request.method == "POST":
+        form = ComentForm(request.POST)
+        com1 = form.save(commit=False)
+        com1.post = post
+        com1.owner = request.user
+        com1.save()
+        messages.success(request, 'Ваш отзыв успешно отправлен')
+        return redirect('detail', pk=post.id)
+
+    return render(request, 'newpost/detail.html', {'post': post, 'form': form})

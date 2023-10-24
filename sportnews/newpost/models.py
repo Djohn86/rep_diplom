@@ -24,3 +24,21 @@ class Sportnews(models.Model):
         return self.title
 
 
+#Рейтинг статьи
+class Coment(models.Model):
+    rating = (
+        ('up', 'Up vote'),
+        ('down', 'Down vote'),
+    )
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Sportnews, on_delete=models.CASCADE)
+    body = models.TextField(blank=True, null=True)
+    value = models.CharField(max_length=50, choices=rating)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.value
+
+    class Meta:
+        unique_together = [['owner', 'post']]
+
