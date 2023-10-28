@@ -7,9 +7,11 @@
         </div>
 </div>
 <div class="new">
+
     
-    
+        
         {% for i in an %}
+        
         <div class="blok">
             <div class="creat"> {{ i.created }} </div>
             
@@ -20,6 +22,27 @@
         {% endfor %}
        
 </div>
+{% if an.has_other_pages %}
+<div class="paginator">
+        <ul class="str">
+                {% if an.has_previous %}
+                <li><a href="?page={{ an.previous_page_number }}" class="link">Назад</a></li>
+                {% endif %}
+
+                {% for page in dist  %}
+                {% if page == an.number %}
+                <li><a href="?page={{ page }}" class="alink">{{ page }}</a></li>
+                {% else %}
+                <li><a href="?page={{ page }}" class="link">{{ page }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if an.has_next %}
+                <li><a href="?page={{ an.next_page_number }}" class="link">Вперед</a></li>
+                {% endif %}
+        </ul>
+</div>
+{% endif %}
 
 
 {% endblock %}

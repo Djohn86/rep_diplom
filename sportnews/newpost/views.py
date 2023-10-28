@@ -6,11 +6,38 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import NewsForm, ComentForm
 from .models import Sportnews
 from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib.auth.decorators import login_required
 
 
 def allnews(request):
     an = Sportnews.objects.order_by('-created')
-    return render(request, 'newpost/allnews.html', {'an': an})
+
+    page = request.GET.get('page')
+    res = 10
+    paginator = Paginator(an, res)
+
+    try:
+        an = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        an = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        an = paginator.page(page)
+
+    lp = int(page) - 2
+    if lp < 1:
+        lp = 1
+
+    rp = int(page) + 3
+    if rp > paginator.num_pages:
+        rp = paginator.num_pages + 1
+
+    dist = range(lp, rp)
+
+    return render(request, 'newpost/allnews.html', {'an': an, 'paginator': paginator, 'dist': dist})
+
 
 
 def signupuser(request):
@@ -41,7 +68,7 @@ def mynews(request):
 # def football(request):
 #     foot = Sportnews.objects.filter()
 
-
+@login_required
 def logoutuser(request):
     if request.method == 'POST':
         logout(request)
@@ -61,6 +88,7 @@ def loginuser(request):
             return redirect('mynews')
 
 
+@login_required
 def createnews(request):
     if request.method == 'GET':
         return render(request, 'newpost/createnews.html', {'form': NewsForm()})
@@ -119,6 +147,9 @@ def detail(request, pk):
         com1.post = post
         com1.owner = request.user
         com1.save()
+
+        post.votes_count()
+
         messages.success(request, 'Ваш отзыв успешно отправлен')
         return redirect('detail', pk=post.id)
 

@@ -10,17 +10,33 @@
 <div class="new">
     
     <div id="news">{{ post.news|linebreaksbr }}</div>
-    <div>
+    <div class="kt">
         {% if post.image %}
         <img src="{{ post.image.url }}">
         {% endif %}
     </div>
     <div class="info">
-        <div>Автор: {{ post.user }}</div>
-        <div>Дата: {{ post.created }}</div>
+        <div>
+            <div>Автор: {{ post.user }}</div>
+            <div>Дата: {{ post.created }}</div>
+        </div>
+        
+        <div class="rating">       
+            <div>Положительные комментарии: {{ post.vote_ratio }}% </div>
+            <div>Всего комментариев: {{ post.vote_total }} </div>
+        </div>
+        
     </div>
 </div>
 <div class="comments">
+    <!-- <p><b>{{ request.user.id }}</b></p>
+    <p><b>{{ post.votes }}</b></p>
+    <p><b>{{ post.user }}</b></p> -->
+    {% if request.user.id in post.votes %}
+    <p class="comentuser"> Вы уже оставили отзыв на статью </p>
+    {% elif  request.user == post.user %}
+    <p class="comentuser"> Вы не можете оставить отзыв на свою статью </p>
+    {% elif request.user.is_authenticated %}
     <form action="{% url 'detail' post.id %}" class="comform" method="POST">
         {% csrf_token %}
         {% for field in form %}
@@ -34,15 +50,27 @@
         <input class='btn btn--sub btn--lg' type="submit">
 
     </form>
+    {% else %}
+    <a href="{% url 'loginuser' %}">Зарегистрируйтесь, чтобы оставить комментарий</a>
+    {% endif %}
 </div>
 <div class="comentlist">
     {% for i in post.coment_set.all %}
     {% if i.body %}
     <div class="comentuser">
-        <div class="usern">Пользователь: {{ i.owner }}</div>
-        <div class="usertext"> {{ i.body }}</div>
-        <div class="user">Дата комментария: {{ i.created }}</div>
+        <div class="usern">
+            <div>Пользователь: <b>{{ i.owner }}</b> </div>
+            <div class="user">Дата комментария: {{ i.created }}</div>
+        </div>
+        
+        <div class="usertext">
+            <div class="alc">
+                {{ i.body }}
+            </div>
+        </div>
+        
     </div>
+    
     {% endif %}
     {% endfor %}
 </div>

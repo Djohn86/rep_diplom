@@ -7,6 +7,13 @@ class NewsForm(ModelForm):
         model = Sportnews
         fields = ['tsport', 'title', 'news', 'image']
 
+        labels = {
+            'tsport': 'Тема новости',
+            'title': 'Введите заголовок',
+            'news': 'Введите текст статьи',
+            'image': 'Загрузите изображение'
+        }
+
 
 class ComentForm(ModelForm):
     class Meta:
